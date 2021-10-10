@@ -8,7 +8,6 @@ function SecondStep(props) {
 	const services = Object.values(props.values.services);
 
 	const validCoupon = "Tokić123";
-	const [correctCouponEntered, setCorrectCouponEntered] = useState(false);
 	const [enteredCoupon, setEnteredCoupon] = useState("");
 	const [showCouponField, setShowCouponField] = useState(false);
 	const [checkedState, setCheckedState] = useState(
@@ -16,8 +15,6 @@ function SecondStep(props) {
 			return val.isChosen;
 		})
 	);
-	console.log(checkedState);
-	const [total, setTotal] = useState(0);
 	const handleOnChange = (position) => {
 		const updatedCheckedState = checkedState.map((item, index) =>
 			index === position ? !item : item
@@ -33,9 +30,6 @@ function SecondStep(props) {
 			},
 			0
 		);
-		console.log(totalPrice);
-		// props.applyPrice(totalPrice);
-		setTotal(totalPrice);
 		props.setPrice(totalPrice);
 		props.chosenService(position);
 	};
@@ -50,7 +44,6 @@ function SecondStep(props) {
 				},
 			};
 			props.handleData("hasValidCoupon")(something);
-			setCorrectCouponEntered(true);
 		} else {
 			alert("Invalid coupon");
 		}
